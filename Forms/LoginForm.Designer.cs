@@ -28,18 +28,97 @@
         /// </summary>
         private void InitializeComponent()
         {
+            TitleLabel = new Label();
+            UsernameTextBox = new TextBox();
+            PasswordTextBox = new TextBox();
+            SignInButton = new Button();
+            SignUpButton = new Button();
             SuspendLayout();
+            // 
+            // TitleLabel
+            // 
+            TitleLabel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            TitleLabel.Font = new Font("Segoe UI", 20F);
+            TitleLabel.Location = new Point(57, 9);
+            TitleLabel.Name = "TitleLabel";
+            TitleLabel.Size = new Size(715, 37);
+            TitleLabel.TabIndex = 0;
+            TitleLabel.Text = "Войти в панель управления";
+            TitleLabel.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // UsernameTextBox
+            // 
+            UsernameTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            UsernameTextBox.Font = new Font("Segoe UI", 16F);
+            UsernameTextBox.Location = new Point(57, 72);
+            UsernameTextBox.Name = "UsernameTextBox";
+            UsernameTextBox.PlaceholderText = "Пользователь";
+            UsernameTextBox.Size = new Size(715, 36);
+            UsernameTextBox.TabIndex = 1;
+            // 
+            // PasswordTextBox
+            // 
+            PasswordTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            PasswordTextBox.Font = new Font("Segoe UI", 16F);
+            PasswordTextBox.Location = new Point(57, 127);
+            PasswordTextBox.Name = "PasswordTextBox";
+            PasswordTextBox.PlaceholderText = "Пароль";
+            PasswordTextBox.Size = new Size(715, 36);
+            PasswordTextBox.TabIndex = 2;
+            PasswordTextBox.UseSystemPasswordChar = true;
+            // 
+            // SignInButton
+            // 
+            SignInButton.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            SignInButton.BackColor = Color.Black;
+            SignInButton.FlatStyle = FlatStyle.Flat;
+            SignInButton.Font = new Font("Segoe UI", 16F);
+            SignInButton.ForeColor = Color.White;
+            SignInButton.Location = new Point(57, 185);
+            SignInButton.Name = "SignInButton";
+            SignInButton.Size = new Size(715, 48);
+            SignInButton.TabIndex = 3;
+            SignInButton.Text = "Войти";
+            SignInButton.UseVisualStyleBackColor = false;
+            SignInButton.Click += SignInButton_Click;
+            // 
+            // SignUpButton
+            // 
+            SignUpButton.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            SignUpButton.BackColor = Color.White;
+            SignUpButton.FlatStyle = FlatStyle.Flat;
+            SignUpButton.Font = new Font("Segoe UI", 16F);
+            SignUpButton.ForeColor = Color.Black;
+            SignUpButton.Location = new Point(57, 252);
+            SignUpButton.Name = "SignUpButton";
+            SignUpButton.Size = new Size(715, 48);
+            SignUpButton.TabIndex = 4;
+            SignUpButton.Text = "Регистрация как пассажира";
+            SignUpButton.UseVisualStyleBackColor = false;
+            SignUpButton.Click += SignUpButton_Click;
             // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(733, 409);
+            ClientSize = new Size(832, 317);
+            Controls.Add(SignUpButton);
+            Controls.Add(SignInButton);
+            Controls.Add(PasswordTextBox);
+            Controls.Add(UsernameTextBox);
+            Controls.Add(TitleLabel);
             Name = "LoginForm";
             Text = "Вход";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Label TitleLabel;
+        private TextBox UsernameTextBox;
+        private TextBox PasswordTextBox;
+        private Button SignInButton;
+        private Button SignUpButton;
     }
 }
