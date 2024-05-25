@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             TitleLabel = new Label();
             UsernameTextBox = new TextBox();
             PasswordTextBox = new TextBox();
@@ -66,6 +67,7 @@
             PasswordTextBox.Size = new Size(715, 36);
             PasswordTextBox.TabIndex = 2;
             PasswordTextBox.UseSystemPasswordChar = true;
+            PasswordTextBox.KeyDown += PasswordTextBox_KeyDown;
             // 
             // SignInButton
             // 
@@ -101,12 +103,14 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(832, 317);
             Controls.Add(SignUpButton);
             Controls.Add(SignInButton);
             Controls.Add(PasswordTextBox);
             Controls.Add(UsernameTextBox);
             Controls.Add(TitleLabel);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "LoginForm";
             Text = "Вход";
             ResumeLayout(false);

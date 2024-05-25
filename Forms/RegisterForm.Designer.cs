@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegisterForm));
             UsernameTextBox = new TextBox();
             label1 = new Label();
             FullNameTextBox = new TextBox();
@@ -77,6 +78,7 @@
             PasswordTextBox.Size = new Size(474, 36);
             PasswordTextBox.TabIndex = 5;
             PasswordTextBox.UseSystemPasswordChar = true;
+            PasswordTextBox.KeyDown += PasswordTextBox_KeyDown;
             // 
             // SignUpButton
             // 
@@ -91,6 +93,7 @@
             SignUpButton.TabIndex = 6;
             SignUpButton.Text = "Зарегистрироваться";
             SignUpButton.UseVisualStyleBackColor = false;
+            SignUpButton.Click += SignUpButton_Click;
             // 
             // BackButton
             // 
@@ -111,6 +114,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(498, 273);
             Controls.Add(BackButton);
             Controls.Add(SignUpButton);
@@ -118,6 +122,7 @@
             Controls.Add(FullNameTextBox);
             Controls.Add(label1);
             Controls.Add(UsernameTextBox);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "RegisterForm";
             Text = "Регистрация";
             ResumeLayout(false);

@@ -1,11 +1,5 @@
 ﻿using Airlines.Models;
 using Airlines.Models.Exceptions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Airlines.Services
 {
@@ -84,7 +78,7 @@ namespace Airlines.Services
             };
         }
 
-        public User Login(string username, string password)
+        public User? GetUserByUsername(string username)
         {
             var connection = DatabaseState.GetDatabaseState().GetConnection();
             var command = connection.CreateCommand();
@@ -98,14 +92,28 @@ namespace Airlines.Services
             if (!reader.HasRows)
             {
                 reader.Close();
-                throw new LoginFailedException();
+                return null;
             }
 
             int userID = reader.GetInt32("id");
+            reader.Close();
+
             var user = GetUser(userID);
+
+            return user;
+        }
+
+        public User Login(string username, string password)
+        {
+            var user = GetUserByUsername(username);
+
+            if (user == null)
+            {
+                throw new LoginFailedException();
+            }
+
             var passwordHash = Utils.CreateMD5(password);
 
-            reader.Close();
 
             if (user.PasswordHash != passwordHash)
             {
@@ -117,17 +125,23 @@ namespace Airlines.Services
 
         public User CreateUser(CreateUser createUser)
         {
+            if (GetUserByUsername(createUser.Username) != null)
+            {
+                throw new UserAlreadyExistsException();
+            }
+
             var connection = DatabaseState.GetDatabaseState().GetConnection();
             var command = connection.CreateCommand();
             command.CommandText = "INSERT INTO user " +
-                "(`username`, `password_hash`, `surname`, `name`, `middlename`)" +
-                "VALUES (@username, @password_hash, @surname, @name, @middlename)";
+                "(`username`, `password_hash`, `surname`, `name`, `middlename`, `role_id`)" +
+                "VALUES (@username, @password_hash, @surname, @name, @middlename, @role_id)";
 
             command.Parameters.AddWithValue("@username", createUser.Username);
             command.Parameters.AddWithValue("@password_hash", Utils.CreateMD5(createUser.Password));
             command.Parameters.AddWithValue("@surname", createUser.Surname);
             command.Parameters.AddWithValue("@name", createUser.Name);
             command.Parameters.AddWithValue("@middlename", createUser.Middlename);
+            command.Parameters.AddWithValue("@role_id", 1);
 
             command.ExecuteNonQuery();
             connection.Close();
