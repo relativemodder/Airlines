@@ -60,7 +60,7 @@ namespace Airlines.Services.ServerServices
             var command = connection.CreateCommand();
             command.CommandText = "SELECT `id`, `departure`, `destination`," +
                 "`passengers`, `plane_id`, `suggested_timestamp`," +
-                "`departure_timestamp`, `destination_timestamp`, " +
+                "`departure_timestamp`, `destination_timestamp` " +
                 "FROM `flight` WHERE `id` = @id";
             command.Parameters.AddWithValue("@id", flightID);
 

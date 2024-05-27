@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 24, 2024 at 10:49 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Хост: 127.0.0.1
+-- Время создания: Май 27 2024 г., 13:09
+-- Версия сервера: 10.4.32-MariaDB
+-- Версия PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `airlines`
+-- База данных: `airlines`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `flight`
+-- Структура таблицы `flight`
 --
 
 CREATE TABLE `flight` (
@@ -41,7 +41,7 @@ CREATE TABLE `flight` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `load`
+-- Структура таблицы `load`
 --
 
 CREATE TABLE `load` (
@@ -56,7 +56,7 @@ CREATE TABLE `load` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `plane`
+-- Структура таблицы `plane`
 --
 
 CREATE TABLE `plane` (
@@ -64,10 +64,18 @@ CREATE TABLE `plane` (
   `model` varchar(90) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Дамп данных таблицы `plane`
+--
+
+INSERT INTO `plane` (`id`, `model`) VALUES
+(1, 'Airbus-A310'),
+(2, 'Airbus-A330');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `role`
+-- Структура таблицы `role`
 --
 
 CREATE TABLE `role` (
@@ -76,10 +84,20 @@ CREATE TABLE `role` (
   `level` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Дамп данных таблицы `role`
+--
+
+INSERT INTO `role` (`id`, `name`, `level`) VALUES
+(1, 'Пассажир', 0),
+(2, 'Экспедитор', 1),
+(3, 'Диспетчер', 2),
+(4, 'Руководитель', 3);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Структура таблицы `user`
 --
 
 CREATE TABLE `user` (
@@ -93,18 +111,30 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Indexes for dumped tables
+-- Дамп данных таблицы `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `password_hash`, `role_id`, `surname`, `name`, `middlename`) VALUES
+(3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 4, 'Ефимов', 'Севастьян', 'Дамирович'),
+(4, 'exp1', 'a03936a341bded3004cc5d039a7cfa37', 2, 'Николаев', 'Валентин', 'Онисимович'),
+(5, 'flightmanager', 'b2251367bbce7dcd9b8c99081e49eb20', 3, 'Виноградов', 'Валерий', 'Евсеевич'),
+(6, 'kozlov21', 'a486e405f0436cb02747d39fa47ebd15', 1, 'Козлов', 'Константин', 'Эдуардович'),
+(7, 'm_agaf', 'a4cf8935b06808a1aa753cf0bc111a16', 1, 'Молчанов', 'Степан', 'Агафонович'),
+(8, 'abramabram', '9c36193701274ff0548164da7efd0b7b', 1, 'Ефимов', 'Абрам', 'Юлианович');
+
+--
+-- Индексы сохранённых таблиц
 --
 
 --
--- Indexes for table `flight`
+-- Индексы таблицы `flight`
 --
 ALTER TABLE `flight`
   ADD PRIMARY KEY (`id`),
   ADD KEY `flight_plane_id_` (`plane_id`);
 
 --
--- Indexes for table `load`
+-- Индексы таблицы `load`
 --
 ALTER TABLE `load`
   ADD PRIMARY KEY (`id`),
@@ -112,77 +142,77 @@ ALTER TABLE `load`
   ADD KEY `load_customer_user_id_` (`customer_user_id`);
 
 --
--- Indexes for table `plane`
+-- Индексы таблицы `plane`
 --
 ALTER TABLE `plane`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `role`
+-- Индексы таблицы `role`
 --
 ALTER TABLE `role`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user`
+-- Индексы таблицы `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_role_id_` (`role_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT для сохранённых таблиц
 --
 
 --
--- AUTO_INCREMENT for table `flight`
+-- AUTO_INCREMENT для таблицы `flight`
 --
 ALTER TABLE `flight`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `load`
+-- AUTO_INCREMENT для таблицы `load`
 --
 ALTER TABLE `load`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `plane`
+-- AUTO_INCREMENT для таблицы `plane`
 --
 ALTER TABLE `plane`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `role`
+-- AUTO_INCREMENT для таблицы `role`
 --
 ALTER TABLE `role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT для таблицы `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- Constraints for dumped tables
+-- Ограничения внешнего ключа сохраненных таблиц
 --
 
 --
--- Constraints for table `flight`
+-- Ограничения внешнего ключа таблицы `flight`
 --
 ALTER TABLE `flight`
   ADD CONSTRAINT `flight_plane_id_` FOREIGN KEY (`plane_id`) REFERENCES `plane` (`id`);
 
 --
--- Constraints for table `load`
+-- Ограничения внешнего ключа таблицы `load`
 --
 ALTER TABLE `load`
   ADD CONSTRAINT `load_customer_user_id_` FOREIGN KEY (`customer_user_id`) REFERENCES `user` (`id`),
   ADD CONSTRAINT `load_flight_id_` FOREIGN KEY (`flight_id`) REFERENCES `flight` (`id`);
 
 --
--- Constraints for table `user`
+-- Ограничения внешнего ключа таблицы `user`
 --
 ALTER TABLE `user`
   ADD CONSTRAINT `user_role_id_` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`);
