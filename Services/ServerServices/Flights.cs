@@ -92,11 +92,15 @@ namespace Airlines.Services.ServerServices
             };
         }
 
-        public List<Flight> GetFlights()
+        public List<Flight> GetFlights(bool verified = false)
         {
             var connection = DatabaseState.GetDatabaseState().GetConnection();
             var command = connection.CreateCommand();
-            command.CommandText = "SELECT `id` FROM `flight`";
+            command.CommandText = (
+                verified 
+                ? "SELECT `id` FROM `flight` WHERE `departure_timestamp` > 0"
+                : "SELECT `id` FROM `flight`"
+                );
 
             var reader = command.ExecuteReader();
 

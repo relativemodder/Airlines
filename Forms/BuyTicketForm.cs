@@ -18,7 +18,7 @@ namespace Airlines.Forms
         {
             InitializeComponent();
 
-            var flights = Client.GetClient().GetFlights();
+            var flights = Client.GetClient().GetVerifiedFlights();
 
             foreach (var flight in flights)
             {

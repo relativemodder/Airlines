@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Airlines.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,11 @@ namespace Airlines.Forms.Dashboard
         public DashboardStaffPanel()
         {
             InitializeComponent();
+        }
+
+        private void PhpMyAdmin_Click(object sender, EventArgs e)
+        {
+            Utils.OpenUrl("https://localhost/phpmyadmin");
         }
     }
 }

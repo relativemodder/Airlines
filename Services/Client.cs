@@ -35,5 +35,10 @@ namespace Airlines.Services
         {
             return Server.GetServer().GetFlights();
         }
+
+        public List<Flight> GetVerifiedFlights()
+        {
+            return Server.GetServer().GetFlights(verified: true);
+        }
     }
 }

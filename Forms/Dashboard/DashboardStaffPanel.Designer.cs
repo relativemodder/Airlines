@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             AnalysisButton = new Button();
+            PhpMyAdmin = new Button();
             SuspendLayout();
             // 
             // AnalysisButton
@@ -44,19 +45,35 @@
             AnalysisButton.Text = "Анализ продаж";
             AnalysisButton.UseVisualStyleBackColor = false;
             // 
+            // PhpMyAdmin
+            // 
+            PhpMyAdmin.BackColor = Color.White;
+            PhpMyAdmin.FlatStyle = FlatStyle.Flat;
+            PhpMyAdmin.Font = new Font("Segoe UI", 13F);
+            PhpMyAdmin.ForeColor = Color.Black;
+            PhpMyAdmin.Location = new Point(366, 3);
+            PhpMyAdmin.Name = "PhpMyAdmin";
+            PhpMyAdmin.Size = new Size(263, 48);
+            PhpMyAdmin.TabIndex = 10;
+            PhpMyAdmin.Text = "phpMyAdmin";
+            PhpMyAdmin.UseVisualStyleBackColor = false;
+            PhpMyAdmin.Click += PhpMyAdmin_Click;
+            // 
             // DashboardStaffPanel
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            Controls.Add(PhpMyAdmin);
             Controls.Add(AnalysisButton);
             Name = "DashboardStaffPanel";
-            Size = new Size(364, 55);
+            Size = new Size(683, 57);
             ResumeLayout(false);
         }
 
         #endregion
 
         private Button AnalysisButton;
+        private Button PhpMyAdmin;
     }
 }
