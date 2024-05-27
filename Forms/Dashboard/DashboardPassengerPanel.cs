@@ -21,5 +21,10 @@ namespace Airlines.Forms.Dashboard
         {
             new FakeMailClient("Экспедиторы").ShowDialog();
         }
+
+        private void BuyButton_Click(object sender, EventArgs e)
+        {
+            new BuyTicketForm().NavigateToFormFrom((NavigatableForm)(Parent ?? this));
+        }
     }
 }

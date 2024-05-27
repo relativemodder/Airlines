@@ -44,6 +44,7 @@
             BuyButton.TabIndex = 8;
             BuyButton.Text = "Купить и забронировать билет на рейс";
             BuyButton.UseVisualStyleBackColor = false;
+            BuyButton.Click += BuyButton_Click;
             // 
             // RequestTheLoadButton
             // 

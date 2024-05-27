@@ -30,5 +30,10 @@ namespace Airlines.Services
         {
             return Server.GetServer().CreateUser(createUser);
         }
+
+        public List<Flight> GetFlights()
+        {
+            return Server.GetServer().GetFlights();
+        }
     }
 }

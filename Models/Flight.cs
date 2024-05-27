@@ -10,5 +10,14 @@
         public required int SuggestedTimestamp { get; set; }
         public required int DepartureTimestamp { get; set; }
         public required int DestinationTimestamp { get; set; }
+
+        public FlightStatus Status { 
+            get
+            {
+                return DepartureTimestamp != 0 
+                    ? FlightStatus.VERIFIED 
+                    : FlightStatus.PROCESSING;
+            }
+        }
     }
 }
