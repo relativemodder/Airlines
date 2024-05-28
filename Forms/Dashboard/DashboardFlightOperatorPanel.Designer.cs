@@ -44,6 +44,7 @@
             FlightsControlButton.TabIndex = 10;
             FlightsControlButton.Text = "Управление расписанием рейсов";
             FlightsControlButton.UseVisualStyleBackColor = false;
+            FlightsControlButton.Click += FlightsControlButton_Click;
             // 
             // ContactButton
             // 

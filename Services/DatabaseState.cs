@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 
 namespace Airlines.Services
 {
@@ -11,6 +6,11 @@ namespace Airlines.Services
     {
         private static DatabaseState? _instance;
         private MySqlConnection? _mySqlConnection;
+
+        private string _server = Environment.GetEnvironmentVariable("AIRLINES_DATABASE_SERVER") ?? "localhost";
+        private string _username = Environment.GetEnvironmentVariable("AIRLINES_DATABASE_USERNAME") ?? "root";
+        private string _password = Environment.GetEnvironmentVariable("AIRLINES_DATABASE_PASSWORD") ?? "";
+        private string _databaseName = Environment.GetEnvironmentVariable("AIRLINES_DATABASE_NAME") ?? "airlines";
 
         public static DatabaseState GetDatabaseState() // I love Singleton
         {
@@ -22,6 +22,11 @@ namespace Airlines.Services
             return _instance;
         }
 
+        public string GetHost()
+        {
+            return _server;
+        }
+
         public MySqlConnection GetConnection()
         {
             // if (_mySqlConnection != null)
@@ -29,12 +34,7 @@ namespace Airlines.Services
             //     return _mySqlConnection;
             // }
 
-            string server = Environment.GetEnvironmentVariable("AIRLINES_DATABASE_SERVER") ?? "localhost";
-            string username = Environment.GetEnvironmentVariable("AIRLINES_DATABASE_USERNAME") ?? "root";
-            string password = Environment.GetEnvironmentVariable("AIRLINES_DATABASE_PASSWORD") ?? "";
-            string databaseName = Environment.GetEnvironmentVariable("AIRLINES_DATABASE_NAME") ?? "airlines";
-
-            string myConnectionString = $"server={server};uid={username};pwd={password};database={databaseName}";
+            string myConnectionString = $"server={_server};uid={_username};pwd={_password};database={_databaseName}";
 
             var mySqlConnection = new MySqlConnection();
             mySqlConnection.ConnectionString = myConnectionString;

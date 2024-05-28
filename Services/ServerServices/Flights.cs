@@ -145,5 +145,35 @@ namespace Airlines.Services.ServerServices
 
             return flights;
         }
+
+        public void DeleteFlight(int flightID)
+        {
+            var connection = DatabaseState.GetDatabaseState().GetConnection();
+            var command = connection.CreateCommand();
+            command.CommandText = "DELETE FROM `flight` WHERE id = @id";
+
+            command.Parameters.AddWithValue("@id", flightID);
+
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        public Flight EditFlight(EditFlight flight)
+        {
+            var connection = DatabaseState.GetDatabaseState().GetConnection();
+            var command = connection.CreateCommand();
+            command.CommandText = "UPDATE `flight` SET " +
+                "departure_timestamp = @departure_timestamp, " +
+                "destination_timestamp = @destination_timestamp WHERE id = @id";
+
+            command.Parameters.AddWithValue("@id", flight.Id);
+            command.Parameters.AddWithValue("@departure_timestamp", flight.DepartureTimestamp);
+            command.Parameters.AddWithValue("@destination_timestamp", flight.DestinationTimestamp);
+
+            command.ExecuteNonQuery();
+            connection.Close();
+
+            return GetFlight(flight.Id);
+        }
     }
 }

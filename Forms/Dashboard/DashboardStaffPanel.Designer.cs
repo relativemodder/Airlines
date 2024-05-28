@@ -44,6 +44,7 @@
             AnalysisButton.TabIndex = 9;
             AnalysisButton.Text = "Анализ продаж";
             AnalysisButton.UseVisualStyleBackColor = false;
+            AnalysisButton.Click += AnalysisButton_Click;
             // 
             // PhpMyAdmin
             // 

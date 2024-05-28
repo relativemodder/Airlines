@@ -1,5 +1,11 @@
 ﻿# Airlines
 
+**WARNING: I IGNORED ALL CLEAN CODE RULES BECAUSE THIS IS THE STUDY PROJECT AND IT'S NOT SERIOUS**
+
+
+Ru:
+
+
 Весь код к программе, относящейся к проекту "Авиакомпания", выполняемому на учебной практике.
 
 Клиент вида "Толстый клиент"
@@ -14,8 +20,18 @@
 
 Задайте в переменных окружения вашей ОС следующие переменные (сделано в целях безопасности):
 
+
 `AIRLINES_DATABASE_SERVER`
+
 `AIRLINES_DATABASE_USERNAME`
+
 `AIRLINES_DATABASE_PASSWORD`
+
 `AIRLINES_DATABASE_NAME`
 
+
+**Необходимо импортировать дамп базы из файла airlines.sql!**
+
+**АВТОРИЗАЦИЯ**
+
+Пароль совпадает с именем пользователя.

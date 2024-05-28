@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace Airlines.Forms.Dashboard
+﻿namespace Airlines.Forms.Dashboard
 {
     public partial class DashboardFlightOperatorPanel : UserControl
     {
@@ -20,6 +10,11 @@ namespace Airlines.Forms.Dashboard
         private void ContactButton_Click(object sender, EventArgs e)
         {
             new FakeMailClient("Руководство").ShowDialog();
+        }
+
+        private void FlightsControlButton_Click(object sender, EventArgs e)
+        {
+            new FlightsControlOperatorForm().NavigateToFormFrom((NavigatableForm)(Parent ?? this));
         }
     }
 }

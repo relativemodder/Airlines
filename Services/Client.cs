@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Airlines.Models;
+﻿using Airlines.Models;
 
 namespace Airlines.Services
 {
@@ -31,9 +26,24 @@ namespace Airlines.Services
             return Server.GetServer().CreateUser(createUser);
         }
 
+        public List<User> GetUsers()
+        {
+            return Server.GetServer().GetUsers();
+        }
+
         public List<Flight> GetFlights()
         {
             return Server.GetServer().GetFlights();
+        }
+
+        public Flight GetFlight(int flightID)
+        {
+            return Server.GetServer().GetFlight(flightID);
+        }
+
+        public void DeleteFlight(int flightID)
+        {
+            Server.GetServer().DeleteFlight(flightID);
         }
 
         public List<Flight> GetVerifiedFlights()
@@ -46,6 +56,11 @@ namespace Airlines.Services
             return Server.GetServer().CreateFlight(flight);
         }
 
+        public Flight EditFlight(EditFlight flight)
+        {
+            return Server.GetServer().EditFlight(flight);
+        }
+
         public List<Plane> GetPlanes()
         {
             return Server.GetServer().GetPlanes();
@@ -54,6 +69,26 @@ namespace Airlines.Services
         public List<Load> GetLoads()
         {
             return Server.GetServer().GetLoads();
+        }
+
+        public Load GetLoad(int loadID)
+        {
+            return Server.GetServer().GetLoad(loadID);
+        }
+
+        public Load CreateOrEditLoad(CreateOrEditLoad load)
+        {
+            return Server.GetServer().CreateOrEditLoad(load);
+        }
+
+        public void DeleteLoad(int loadID)
+        {
+            Server.GetServer().DeleteLoad(loadID);
+        }
+
+        public SalesAnalysis GetSalesAnalysis()
+        {
+            return Server.GetServer().GetSalesAnalysis();
         }
     }
 }

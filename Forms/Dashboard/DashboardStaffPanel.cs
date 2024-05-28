@@ -20,7 +20,13 @@ namespace Airlines.Forms.Dashboard
 
         private void PhpMyAdmin_Click(object sender, EventArgs e)
         {
-            Utils.OpenUrl("https://localhost/phpmyadmin");
+            var host = DatabaseState.GetDatabaseState().GetHost();
+            Utils.OpenUrl($"http://{host}/phpmyadmin");
+        }
+
+        private void AnalysisButton_Click(object sender, EventArgs e)
+        {
+            new SalesAnalysisForm().NavigateToFormFrom((NavigatableForm)(Parent ?? this));
         }
     }
 }

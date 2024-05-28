@@ -1,6 +1,6 @@
 ﻿namespace Airlines.Forms
 {
-    partial class LoadsControlForm
+    partial class SalesAnalysisForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,38 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            AddLoadButton = new Button();
-            LoadsList = new ListBox();
             TitleLabel = new Label();
             BackButton = new Button();
+            SalesAnalysisLabel = new Label();
             SuspendLayout();
-            // 
-            // AddLoadButton
-            // 
-            AddLoadButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            AddLoadButton.BackColor = Color.Black;
-            AddLoadButton.FlatStyle = FlatStyle.Flat;
-            AddLoadButton.Font = new Font("Segoe UI", 20F);
-            AddLoadButton.ForeColor = Color.White;
-            AddLoadButton.Location = new Point(483, 502);
-            AddLoadButton.Name = "AddLoadButton";
-            AddLoadButton.Size = new Size(75, 52);
-            AddLoadButton.TabIndex = 16;
-            AddLoadButton.Text = "+";
-            AddLoadButton.UseVisualStyleBackColor = false;
-            AddLoadButton.Click += AddLoadButton_Click;
-            // 
-            // LoadsList
-            // 
-            LoadsList.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            LoadsList.Font = new Font("Segoe UI", 13F);
-            LoadsList.FormattingEnabled = true;
-            LoadsList.ItemHeight = 23;
-            LoadsList.Location = new Point(12, 138);
-            LoadsList.Name = "LoadsList";
-            LoadsList.Size = new Size(546, 349);
-            LoadsList.TabIndex = 15;
-            LoadsList.DoubleClick += LoadsList_DoubleClick;
             // 
             // TitleLabel
             // 
@@ -67,9 +39,9 @@
             TitleLabel.Font = new Font("Segoe UI", 20F);
             TitleLabel.Location = new Point(12, 63);
             TitleLabel.Name = "TitleLabel";
-            TitleLabel.Size = new Size(546, 54);
-            TitleLabel.TabIndex = 14;
-            TitleLabel.Text = "Работа с грузами";
+            TitleLabel.Size = new Size(496, 52);
+            TitleLabel.TabIndex = 13;
+            TitleLabel.Text = "Анализ продаж";
             TitleLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // BackButton
@@ -81,32 +53,40 @@
             BackButton.Location = new Point(12, 12);
             BackButton.Name = "BackButton";
             BackButton.Size = new Size(156, 48);
-            BackButton.TabIndex = 13;
+            BackButton.TabIndex = 12;
             BackButton.Text = "Назад";
             BackButton.UseVisualStyleBackColor = false;
             BackButton.Click += BackButton_Click;
             // 
-            // LoadsControlForm
+            // SalesAnalysisLabel
+            // 
+            SalesAnalysisLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            SalesAnalysisLabel.Font = new Font("Segoe UI", 13F);
+            SalesAnalysisLabel.Location = new Point(26, 147);
+            SalesAnalysisLabel.Name = "SalesAnalysisLabel";
+            SalesAnalysisLabel.Size = new Size(467, 392);
+            SalesAnalysisLabel.TabIndex = 14;
+            SalesAnalysisLabel.Text = "Анализ продаж";
+            // 
+            // SalesAnalysisForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(570, 566);
-            Controls.Add(AddLoadButton);
-            Controls.Add(LoadsList);
+            ClientSize = new Size(520, 563);
+            Controls.Add(SalesAnalysisLabel);
             Controls.Add(TitleLabel);
             Controls.Add(BackButton);
-            Name = "LoadsControlForm";
-            Text = "Работа с грузами";
+            Name = "SalesAnalysisForm";
+            Text = "Анализ продаж";
             WindowState = FormWindowState.Maximized;
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Button AddLoadButton;
-        private ListBox LoadsList;
         private Label TitleLabel;
         private Button BackButton;
+        private Label SalesAnalysisLabel;
     }
 }

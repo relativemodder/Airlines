@@ -3,13 +3,13 @@ using Airlines.Services;
 
 namespace Airlines.Forms
 {
-    public partial class BuyTicketForm : NavigatableForm
+    public partial class FlightsControlOperatorForm : NavigatableForm
     {
-        public BuyTicketForm()
+        public FlightsControlOperatorForm()
         {
             InitializeComponent();
 
-            var flights = Client.GetClient().GetVerifiedFlights();
+            var flights = Client.GetClient().GetFlights();
 
             foreach (var flight in flights)
             {
@@ -25,7 +25,7 @@ namespace Airlines.Forms
                     SuggestedTimestamp = flight.SuggestedTimestamp
                 };
 
-                FlightComboBox.Items.Add(flight1);
+                FlightsList.Items.Add(flight1);
             }
         }
 
@@ -34,23 +34,16 @@ namespace Airlines.Forms
             new DashboardForm().NavigateToFormFrom(this);
         }
 
-        private void ContactExpeditorButton_Click(object sender, EventArgs e)
+        private void FlightsList_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            new FakeMailClient("Экспедиторы").ShowDialog();
-        }
-
-        private void SubmitButton_Click(object sender, EventArgs e)
-        {
-            var result = MessageBox.Show("Оплатить?", "Fake payments form", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            
-            if (result != DialogResult.Yes)
+            if (FlightsList.SelectedItem == null)
             {
                 return;
             }
 
-            MessageBox.Show("Благодарим за использование услуг авиакомпании!");
+            var flight = (FlightComboBoxElement)FlightsList.SelectedItem;
 
-            BackButton_Click(sender, e);
+            new ChangeFlightTimeForm(flight.Id).NavigateToFormFrom(this);
         }
     }
 }

@@ -1,11 +1,7 @@
 ﻿using Airlines.Models.Exceptions;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Airlines.Services
 {
@@ -20,6 +16,14 @@ namespace Airlines.Services
 
                 return Convert.ToHexString(hashBytes).ToLower();
             }
+        }
+
+        public static DateTime UnixTimeStampToDateTime(double unixTimeStamp)
+        {
+            // Unix timestamp is seconds past epoch
+            DateTime dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+            dateTime = dateTime.AddSeconds(unixTimeStamp).ToLocalTime();
+            return dateTime;
         }
 
         public static void OpenUrl(string url)

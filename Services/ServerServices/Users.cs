@@ -92,6 +92,34 @@ namespace Airlines.Services.ServerServices
             return user;
         }
 
+        public List<User> GetUsers()
+        {
+            var connection = DatabaseState.GetDatabaseState().GetConnection();
+            var command = connection.CreateCommand();
+            command.CommandText = "SELECT `id` FROM `user`";
+
+            var reader = command.ExecuteReader();
+
+            List<User> users = new List<User>();
+            List<int> userIDs = new List<int>();
+
+            while (reader.Read())
+            {
+                int userID = reader.GetInt32("id");
+                userIDs.Add(userID);
+            }
+
+            reader.Close();
+            connection.Close();
+
+            foreach (var userID in userIDs)
+            {
+                users.Add(GetUser(userID));
+            }
+
+            return users;
+        }
+
         public User Login(string username, string password)
         {
             var user = GetUserByUsername(username);
