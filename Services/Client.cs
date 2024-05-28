@@ -40,5 +40,20 @@ namespace Airlines.Services
         {
             return Server.GetServer().GetFlights(verified: true);
         }
+
+        public Flight CreateFlight(CreateFlight flight)
+        {
+            return Server.GetServer().CreateFlight(flight);
+        }
+
+        public List<Plane> GetPlanes()
+        {
+            return Server.GetServer().GetPlanes();
+        }
+
+        public List<Load> GetLoads()
+        {
+            return Server.GetServer().GetLoads();
+        }
     }
 }

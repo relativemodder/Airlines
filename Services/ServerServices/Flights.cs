@@ -2,7 +2,7 @@
 
 namespace Airlines.Services.ServerServices
 {
-    public class Flights
+    public class Flights : Loads
     {
         public Plane GetPlane(int planeID)
         {
@@ -52,6 +52,29 @@ namespace Airlines.Services.ServerServices
             }
 
             return planes;
+        }
+
+        public Flight CreateFlight(CreateFlight flight)
+        {
+            var connection = DatabaseState.GetDatabaseState().GetConnection();
+            var command = connection.CreateCommand();
+            command.CommandText = "INSERT INTO flight " +
+                "(`departure`, `destination`, `passengers`, `plane_id`, `suggested_timestamp`, `departure_timestamp`, `destination_timestamp`)" +
+                "VALUES (@departure, @destination, @passengers, @plane_id, @suggested_timestamp, @departure_timestamp, @destination_timestamp)";
+
+            command.Parameters.AddWithValue("@departure", flight.Departure);
+            command.Parameters.AddWithValue("@destination", flight.Destination);
+            command.Parameters.AddWithValue("@passengers", flight.Passengers);
+            command.Parameters.AddWithValue("@plane_id", flight.PlaneId);
+            command.Parameters.AddWithValue("@suggested_timestamp", flight.SuggestedTimestamp);
+            command.Parameters.AddWithValue("@departure_timestamp", 0);
+            command.Parameters.AddWithValue("@destination_timestamp", 0);
+
+            command.ExecuteNonQuery();
+            connection.Close();
+
+            int flightID = (int)command.LastInsertedId;
+            return GetFlight(flightID);
         }
 
         public Flight GetFlight(int flightID)

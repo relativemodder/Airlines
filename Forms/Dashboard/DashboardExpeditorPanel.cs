@@ -22,5 +22,15 @@ namespace Airlines.Forms.Dashboard
         {
             new FakeMailClient("Руководство").ShowDialog();
         }
+
+        private void FlightsControlButton_Click(object sender, EventArgs e)
+        {
+            new FlightsControlExpeditorForm().NavigateToFormFrom((NavigatableForm)(Parent ?? this));
+        }
+
+        private void ControlLoadButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

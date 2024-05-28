@@ -59,6 +59,7 @@
             FlightsControlButton.TabIndex = 12;
             FlightsControlButton.Text = "Управление расписанием рейсов";
             FlightsControlButton.UseVisualStyleBackColor = false;
+            FlightsControlButton.Click += FlightsControlButton_Click;
             // 
             // ControlLoadButton
             // 
@@ -72,6 +73,7 @@
             ControlLoadButton.TabIndex = 14;
             ControlLoadButton.Text = "Работа с грузами";
             ControlLoadButton.UseVisualStyleBackColor = false;
+            ControlLoadButton.Click += ControlLoadButton_Click;
             // 
             // DashboardExpeditorPanel
             // 

@@ -42,5 +42,24 @@ namespace Airlines.Forms
         {
             new DashboardForm().NavigateToFormFrom(this);
         }
+
+        private void ContactExpeditorButton_Click(object sender, EventArgs e)
+        {
+            new FakeMailClient("Экспедиторы").ShowDialog();
+        }
+
+        private void SubmitButton_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("Оплатить?", "Fake payments form", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            
+            if (result != DialogResult.Yes)
+            {
+                return;
+            }
+
+            MessageBox.Show("Благодарим за использование услуг авиакомпании!");
+
+            BackButton_Click(sender, e);
+        }
     }
 }

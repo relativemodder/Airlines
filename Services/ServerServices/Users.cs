@@ -34,6 +34,7 @@ namespace Airlines.Services.ServerServices
         {
             var connection = DatabaseState.GetDatabaseState().GetConnection();
             var command = connection.CreateCommand();
+
             command.CommandText = "SELECT `id`, `username`, `password_hash`, `role_id`, " +
                 "`surname`, `name`, `middlename` FROM `user` WHERE `id` = @id";
             command.Parameters.AddWithValue("@id", userID);
