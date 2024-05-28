@@ -74,6 +74,7 @@
             // ExpeditorsHint
             // 
             ExpeditorsHint.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            ExpeditorsHint.FlatStyle = FlatStyle.Popup;
             ExpeditorsHint.Font = new Font("Segoe UI", 13F);
             ExpeditorsHint.Location = new Point(3, 117);
             ExpeditorsHint.Name = "ExpeditorsHint";
