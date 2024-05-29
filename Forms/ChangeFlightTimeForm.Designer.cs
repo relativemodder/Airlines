@@ -77,6 +77,8 @@
             // DepartureDateTimePicker
             // 
             DepartureDateTimePicker.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            DepartureDateTimePicker.CustomFormat = "dd.MM.yyyy HH:mm";
+            DepartureDateTimePicker.Format = DateTimePickerFormat.Custom;
             DepartureDateTimePicker.Location = new Point(12, 190);
             DepartureDateTimePicker.Name = "DepartureDateTimePicker";
             DepartureDateTimePicker.Size = new Size(478, 23);
@@ -105,6 +107,8 @@
             // DestinationDateTimePicker
             // 
             DestinationDateTimePicker.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            DestinationDateTimePicker.CustomFormat = "dd.MM.yyyy HH:mm";
+            DestinationDateTimePicker.Format = DateTimePickerFormat.Custom;
             DestinationDateTimePicker.Location = new Point(12, 273);
             DestinationDateTimePicker.Name = "DestinationDateTimePicker";
             DestinationDateTimePicker.Size = new Size(478, 23);

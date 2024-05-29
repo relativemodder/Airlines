@@ -122,7 +122,9 @@
             // SuggestedDateTimePicker
             // 
             SuggestedDateTimePicker.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            SuggestedDateTimePicker.CustomFormat = "dd.MM.yyyy";
             SuggestedDateTimePicker.Font = new Font("Segoe UI", 13F);
+            SuggestedDateTimePicker.Format = DateTimePickerFormat.Custom;
             SuggestedDateTimePicker.Location = new Point(12, 377);
             SuggestedDateTimePicker.Name = "SuggestedDateTimePicker";
             SuggestedDateTimePicker.Size = new Size(436, 31);
